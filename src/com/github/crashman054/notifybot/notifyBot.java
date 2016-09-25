@@ -47,6 +47,7 @@ public class notifyBot {
 		System.out.println(title);
 	}
 	
+	@SuppressWarnings("unused")
 	public static String update(String initialLink) {
 		Element html;
 		String title = null;
