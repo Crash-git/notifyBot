@@ -2,14 +2,14 @@
 Discord bot that grabs HTML, RSS, and tweets.
 
 # Usage
-General Commands:
+### General Commands:
 
-!ping - returns "pong"
+* !ping - returns "pong"
 
-Update Commands:
+### Update Commands:
 
-!update - grabs the latest dev post from the dev tracker. Only gets forum posts at the moment.
+* !update - grabs the latest dev post from the dev tracker. Only gets forum posts at the moment.
 
-Admin Commands:
+### Admin Commands:
 
-!set channel - sets the channel that the bot uses to post automatic updates. Can only be used by a manager.
+* !set channel - sets the channel that the bot uses to post automatic updates. Can only be used by a manager.
