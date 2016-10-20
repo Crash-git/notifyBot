@@ -5,6 +5,7 @@ package com.github.crashman054.notifyBot;
  * --------------------------------------VERSION HISTORY-----------------------------------------------------------------------
  * 0.1.0 - Initial program (9/21/16)
  * 0.2.0 - Added command handler and login classes. Set up listeners and data extraction.
+ * 0.3.0 - Added main loop for automatic updating. Fixed update check not registering old content properly.
  * ----------------------------------------------------------------------------------------------------------------------------
  */
 import java.io.IOException;	
@@ -32,7 +33,8 @@ public class App extends NotifyBot implements IListener<ReadyEvent>{
 		String link = "test";
 		Element content;
 		String oldContent;
-		String oldTitle;
+		String oldTitle = null; //Can't be nothing, because of the if statement below
+		String oldLink = null;
 		Document doc = null;
 		
 		
@@ -51,18 +53,25 @@ public class App extends NotifyBot implements IListener<ReadyEvent>{
 		link = content.attr("href");
 		title = content.text();
 		
+		//set the old title and link for reference
+		oldTitle = title;
+		oldLink = link;
 		
 		//Print that data to the console (debug)
 		System.out.println(content);
 		System.out.println(link);
 		System.out.println(title);
 		
-		
-		return link +  " " + title;
+		//If the post is the same as before, return a value of no. Otherwise, return the info.
+		if (title != oldTitle && link != oldLink) {
+			return link +  " " + title;
+		}
+		else
+			return "no";
 		
 	}
 	
-	public void handle(ReadyEvent event) {
+	public void handle(ReadyEvent event) {//Discord throws out a ReadyEvent when the bot is ready to communicate. This prints a "Ready!" into the console.
 		System.out.print("Ready!");
 	}
 }
