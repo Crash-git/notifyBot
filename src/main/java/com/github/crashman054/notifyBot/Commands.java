@@ -12,7 +12,7 @@ import sx.blah.discord.util.RateLimitException;
 //This method handles any text commands. It is running as long as the bot is.
 public class Commands {
 	
-	public static IChannel autoChannel;
+	public static String autoChannel;
 	
 	//Prints a message when !update is typed, returns it to same channel
 	 @EventSubscriber
@@ -62,7 +62,7 @@ public class Commands {
 		
 		//!set channel command
 		if (message.getContent().startsWith("!set channel")) {
-			autoChannel = message.getChannel();
+			autoChannel = channel.getID();
 			
 			try {
 				new MessageBuilder(event.getClient()).withChannel(channel).withContent("Channel set!").build();
